@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Drawing</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<p>select shape you want to apply</p>
+    <button onclick="drawRectangle()">Draw Rectangle</button>
+    <button onclick="drawCircle()">Draw Circle</button>
+
+    <p>Select the colour you want to apply</p>
+    <button onclick="changecolor()">Change colour</button>
+    <button onclick="setColor('red')">Red</button>
+    <button onclick="setColor('blue')">Blue</button>
+    
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        let color = "black";  // Default color
+
+        function drawRectangle() {
+            ctx.fillStyle = color;
+            ctx.fillRect(10, 10, 150, 100);
+        }
+
+        function drawCircle() {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(200, 150, 50, 0, Math.PI * 2);
+           ctx.fill();
+            ctx.stroke();
+        }
+
+        function setColor(selectedColor) {
+        if (selectedColor === "red") {
+            color = "red";
+        } else if (selectedColor === "blue") {
+            color = "blue";
+        }
+    }
+    </script>
+
+</body>
+</html>
